@@ -10,8 +10,8 @@
   "testcases": [
     {
       "casename": "Testcase Demo",
-      "pre_call": "echo 'This is called BEFORE cmd_line call'",
-      "post_call": "echo 'This is called AFTER cmd_line call'",
+      "pre_call": "echo 'This is called BEFORE cmdline call'",
+      "post_call": "echo 'This is called AFTER cmdline call'",
       "stoponfail": "true",
       "cmdline": "python testcases/testcasedemo.py",
       "params": {

@@ -21,13 +21,14 @@ def main():
     if len(sys.argv)<1:
         print 'ERROR:Please supply the param file'
         return False
-    param_dict = None
+    param_dict, param_str = None, ''
     with open(sys.argv[1], 'r') as fp:
-        param_dict = json.loads(fp.read())
+        param_str = fp.read()
+        param_dict = json.loads(param_str)
     if not param_dict:
         print 'ERROR:param file can NOT be empty'
         return False
-    print 'Get params:', sys.argv[0], param_dict
+    print 'Get params:', sys.argv[0], param_str
     return True
 
 if __name__ == '__main__':

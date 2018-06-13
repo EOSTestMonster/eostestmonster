@@ -70,7 +70,8 @@ def run_testcase(case_dict, common_params):
 
 def run_monster(conf_dict):
     for case_dict in conf_dict['testcases']:
-        if not run_testcase(case_dict, conf_dict['common_params']):
+        result = run_testcase(case_dict, conf_dict['common_params'])
+        if case_dict['stoponfail'] and not result:
             return False
     return True
 
