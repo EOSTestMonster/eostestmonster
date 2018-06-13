@@ -7,4 +7,5 @@ Collection of EOSIO function testcase scripts from the community
 
 
 ![image](./image/config.png)
+
 ![image](./image/startmonster.png)
