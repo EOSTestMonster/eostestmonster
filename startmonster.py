@@ -84,6 +84,10 @@ def main():
     args = parser.parse_args()
     conf_file = os.path.abspath(os.path.expanduser(args.config))
     # Check the parameters
+    if not os.path.exists('testcases'):
+        print 'ERROR: call startmonster.py in the eostestmonster directory'
+        sys.exit(1)
+
     conf_dict = None
     with open(conf_file, 'r') as fp:
         conf_dict = json.loads(fp.read())
@@ -93,9 +97,7 @@ def main():
     if not check_exist_acct(conf_dict):
         print 'ERROR: the exist_account is NOT available'
         sys.exit(1)
-    if not os.path.exists('testcases'):
-        print 'ERROR: call startmonster.py in the eostestmonster directory'
-        sys.exit(1)
+
     setup_env()
 
     # Start the testcase
