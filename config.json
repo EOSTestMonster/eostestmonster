@@ -1,0 +1,23 @@
+{
+  "common_params": {
+    "nodeos_url": "http://127.0.0.1:8888",
+    "wallet_url": "http://127.0.0.1:9800",
+    "exist_account": "eosttmonster",
+    "exist_acct_active_pub": "EOS8TfBSfwjPeKCgUfCCEfJPx1UhP2CS1Xh8xoYoELtkQJQ9g99vP",
+    "exist_acct_active_pri": "5KdJZv62ZKzxhasNSojk7gC712pF9sRad4KhVyugg442qYvhWYw",
+    "req_timeout": 3
+  },
+  "testcases": [
+    {
+      "casename": "Testcase Demo",
+      "pre_call": "echo 'This is called BEFORE cmd_line call'",
+      "post_call": "echo 'This is called AFTER cmd_line call'",
+      "stoponfail": "true",
+      "cmdline": "python testcases/testcasedemo.py",
+      "params": {
+        "demo_param1": "demo_param1",
+        "demo_param2": 100
+      }
+    }
+  ]
+}
