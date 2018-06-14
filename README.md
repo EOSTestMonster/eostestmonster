@@ -21,9 +21,11 @@ Operation steps:
 操作步骤：
 
 1.Add testcase info、parameter to config.json.
+
 1.在config.json中增加testcase信息、对应参数
 
 2.Create a new file under the testcase/ And write the functions what you want to test.
+
 2.在testcase/文件夹下写想要测试的功能。
 
 
