@@ -1,21 +1,23 @@
 # eostestmonster
-Collection of EOSIO function testcase scripts from the community.
+社区EOSIO函数testcase脚本集合。
 
-Main functionatily of this project is to test the function of the eosio-mainnet conveniently.
+主要功能：方便对主网的功能进行测试。
 
-[点击查看中文](README_CN.md)
+[Click to view in English](README.md)
 
-## Principle
+## 原理
 
-`startmonster.py` will call in a loop and merge common_params with the param specified by testcase, stored in a file in the ./tmp directory, passed as the first argument when calling cmdline, and then parsed through the program in the testcase folder.
+startmonster.py 会循环调用，并把 common_params 和 testcase指定的param合并，存储到./tmp目录下面一个文件，在调用 cmdline 时作为第一个参数传递进去，然后通过testcase 文件夹中的程序进行解析。
 
-Steps:
+Operation steps:
 
-1. Add testcase information and the corresponding parameters in config.json
+操作步骤：
 
-2. Create the function you want to test in the `testcases/` folder.
+1. 在`config.json`中增加 testcase 信息、对应参数
 
-   Demo `config.json`:
+2. 在`testcases/` 文件夹下写想要测试的功能。
+
+   示例 `config.json`:
 
    ```
    {
@@ -40,13 +42,9 @@ Steps:
          }
        }
      ]
-   }3.run startmoster.py
+   }
    ```
 
-3. run startmoster.py
-
-   ```
-   ./startmoster.py
-   ```
+3. 运行startmoster.py
 
 ![image](./image/startmonster.png)
