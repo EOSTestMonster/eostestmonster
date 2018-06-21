@@ -12,7 +12,9 @@ If you need to adjust the format of the log output, you can modify the logging.c
 """
 
 import logging
+from os import path
 from logging.config import fileConfig
 
-fileConfig('./logging.conf')
-logger = logging.getLogger('root') # 同时输出到文件与控制台
+log_file_path = path.join(path.dirname(path.abspath(__file__)), 'logging.conf')
+fileConfig(log_file_path)
+logger = logging.getLogger(__name__)

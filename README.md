@@ -3,6 +3,7 @@ Collection of EOSIO function testcase scripts from the community.
 
 Main functionatily of this project is to test the function of the eosio-mainnet conveniently.
 
+We choose to use **Python3** for future.
 [点击查看中文](README_CN.md)
 
 ## Principle
@@ -40,13 +41,13 @@ Steps:
          }
        }
      ]
-   }3.run startmoster.py
+   }
    ```
 
 3. run startmoster.py
 
    ```
-   ./startmoster.py
+   python3 ./startmoster.py
    ```
 
 ![image](./image/startmonster.png)

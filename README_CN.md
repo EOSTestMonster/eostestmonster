@@ -3,6 +3,8 @@
 
 主要功能：方便对主网的功能进行测试。
 
+该项目需要使用 Python3, 为了未来。
+
 [Click to view in English](README.md)
 
 ## 原理
