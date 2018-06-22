@@ -6,14 +6,11 @@ import os
 import sys
 import time
 import json
-import yaml
 import requests
 import argparse
 import subprocess 
 import traceback
-import simplejson as json
 import multiprocessing
-from bs4 import BeautifulSoup
 from decimal import Decimal, getcontext
 
 def main():
