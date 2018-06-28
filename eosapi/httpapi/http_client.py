@@ -186,6 +186,4 @@ class HttpClient(object):
 
 if __name__ == '__main__':
     h = HttpClient(["http://eosdapp.oneeos.org:8000"])
-    print(h.exec('chain', 'get_block', {"block_num_or_id": 5}))
     print(h.exec('chain', 'get_info'))
-    # h.exec('get_block', '{"block_num_or_id":5}')

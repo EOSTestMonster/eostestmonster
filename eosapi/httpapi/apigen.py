@@ -57,6 +57,4 @@ def load_spec(api_name):
 
 if __name__ == '__main__':
     print(os.path.abspath(os.path.dirname(__file__)))
-    # api_codegen(*load_spec('chain'))
     api_codegen(*load_spec('history'))
-    # inspect_api_coverage()
