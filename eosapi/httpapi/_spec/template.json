@@ -1,3 +1,4 @@
+// this template json file. if have new api you need add, you can add it by this format.
 {
   "get_actions": {
     "params": {

@@ -20,8 +20,7 @@ from urllib3.exceptions import (
     ReadTimeoutError,
     ProtocolError,
 )
-
-logger = logging.getLogger(__name__)
+from logs.log import logger
 
 
 class HttpClient(object):
@@ -76,9 +75,6 @@ class HttpClient(object):
         self.nodes = cycle(self._nodes(nodes))
         self.node_url = ''
         self.next_node()
-
-        log_level = kwargs.get('log_level', logging.INFO)
-        logger.setLevel(log_level)
 
     def next_node(self):
         """ Switch to the next available node.
@@ -189,7 +185,7 @@ class HttpClient(object):
 
 
 if __name__ == '__main__':
-    h = HttpClient(["http://localhost:8888", "http://localhost:8899"])
+    h = HttpClient(["http://eosdapp.oneeos.org:8000"])
     print(h.exec('chain', 'get_block', {"block_num_or_id": 5}))
     print(h.exec('chain', 'get_info'))
     # h.exec('get_block', '{"block_num_or_id":5}')

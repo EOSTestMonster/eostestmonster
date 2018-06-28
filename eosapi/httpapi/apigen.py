@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 from functools import partial
 
@@ -47,13 +48,15 @@ def api_codegen(api_name, api_spec):
 
 
 def load_spec(api_name):
-    with open(f"../_spec/{api_name}.json", 'r') as f:
+    json_path = os.path.abspath(os.path.dirname(__file__))
+    with open(f"{json_path}/_spec/{api_name}.json", 'r') as f:
         data = f.read()
 
     return api_name, json.loads(data)
 
 
 if __name__ == '__main__':
+    print(os.path.abspath(os.path.dirname(__file__)))
     # api_codegen(*load_spec('chain'))
     api_codegen(*load_spec('history'))
     # inspect_api_coverage()

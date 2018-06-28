@@ -28,8 +28,6 @@ def check_exist_acct(conf_dict):
     '''check the common_params.exist_account availability'''
 
     # NOTE: get account that you need open http plugin.
-    # TODO add cli api to solve not open http plugin,
-    # TODO but by this way you need run this program in your nodeos server
 
     assert conf_dict['common_params']['exist_account']
     client = Client([conf_dict['common_params']['nodeos_url']])
