@@ -57,12 +57,12 @@ Steps:
 
     - Postion: <project name>/eosapi/httpapi
     - Directory
-        - apigen.py ->  this file work for gen api method when you add _spec/xxx.json file.
+
         - client.py ->  this file work for call api function.
         - exceptions.py ->  this file work for custom exception
         - http_client.py -> this file work for base http client class. client.py inherit it.
         - util/ ->  this directory work for add common function.
-        - _spec/ ->  this directory work for add new json api.
+
     - Example
 
         ```
