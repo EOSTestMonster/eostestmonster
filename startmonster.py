@@ -14,6 +14,8 @@ import time
 import traceback
 
 from logs.log import logger
+from eosapi.httpapi.client import Client
+from eosapi.httpapi.exceptions import HttpAPIError
 
 TMP_PATH = './tmp'
 
@@ -24,7 +26,15 @@ TMP_PATH = './tmp'
 
 def check_exist_acct(conf_dict):
     '''check the common_params.exist_account availability'''
-    # TODO: need to be realized
+
+    # NOTE: get account that you need open http plugin.
+
+    assert conf_dict['common_params']['exist_account']
+    client = Client([conf_dict['common_params']['nodeos_url']])
+    try:
+        client.get_account(conf_dict['common_params']['exist_account'])
+    except HttpAPIError as err:
+        return False
     return True
 
 
