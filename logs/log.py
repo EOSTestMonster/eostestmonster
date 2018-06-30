@@ -17,4 +17,10 @@ from logging.config import fileConfig
 
 log_file_path = path.join(path.dirname(path.abspath(__file__)), 'logging.conf')
 fileConfig(log_file_path)
-logger = logging.getLogger(__name__)
+
+
+def Logger(method='root'):
+    return logging.getLogger(method)
+
+
+logger = Logger()
