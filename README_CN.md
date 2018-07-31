@@ -11,8 +11,6 @@
 
 startmonster.py 会循环调用，并把 common_params 和 testcase指定的param合并，存储到./tmp目录下面一个文件，在调用 cmdline 时作为第一个参数传递进去，然后通过testcase 文件夹中的程序进行解析。
 
-Operation steps:
-
 操作步骤：
 
 1. 在`config.json`中增加 testcase 信息、对应参数
