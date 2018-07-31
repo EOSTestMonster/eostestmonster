@@ -13,7 +13,7 @@
       "pre_call": "echo 'This is called BEFORE cmdline call'",
       "post_call": "echo 'This is called AFTER cmdline call'",
       "stoponfail": "true",
-      "cmdline": "python testcases/testcasedemo.py",
+      "cmdline": "python3 testcases/testcasedemo.py",
       "params": {
         "demo_param1": "demo_param1",
         "demo_param2": 100

@@ -1,2 +1,6 @@
 tmp/*
 .DS_Store
+.idea
+*.pyc
+dist/
+testcases.log

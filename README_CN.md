@@ -3,13 +3,13 @@
 
 主要功能：方便对主网的功能进行测试。
 
+该项目需要使用 **Python3**, 为了未来。
+
 [Click to view in English](README.md)
 
 ## 原理
 
 startmonster.py 会循环调用，并把 common_params 和 testcase指定的param合并，存储到./tmp目录下面一个文件，在调用 cmdline 时作为第一个参数传递进去，然后通过testcase 文件夹中的程序进行解析。
-
-Operation steps:
 
 操作步骤：
 
