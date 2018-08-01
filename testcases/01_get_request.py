@@ -6,6 +6,7 @@ import os
 import sys
 import time
 import json
+import string
 import requests
 import argparse
 from subprocess import Popen, PIPE 
@@ -60,12 +61,12 @@ def transfer():
     #执行转账
     cmdline2 = 'cleos transfer zhangshiqi12 zhangshiqi11 \"2.0000 EOS\" '
     process = Popen(cmdline2, stdout=PIPE, stderr=PIPE,shell=True)
-    stdout, stderr = process.communicate()
-    if stdout:
-        print(f'{cmdline2} ===========================  ok')
-    if stderr:
-        print(f'{cmdline2} =========================== fail')
-        print(stderr)
+    #stdout, stderr = process.communicate()
+    #if stdout:
+    #    print(f'{cmdline2} ===========================  ok')
+    #if stderr:
+    #    print(f'{cmdline2} =========================== fail')
+    #    print(stderr)
     time.sleep(3)
     #查看转账后的余额
     cmdline = "cleos get currency balance eosio.token zhangshiqi12"
@@ -88,10 +89,10 @@ def transfer():
         print(f'{cmdline} =========================== fail')
         print(stderr)
     #判断是否与预期相等
-    #if (int(account1_balance1)- int(account1_balance2)) == (int(account2_balance2) - int(account2_balance1)):
-    #    print(f'{cmdline2} ===========================  ok')
-    #else:
-    #    print(f'{cmdline2} ===========================  fail')
+    if (float(account1_balance1[:-4])- float(account1_balance2[:-4])) == (float(account2_balance2[:-4]) - float(account2_balance1[:-4])):
+        print(f'{cmdline2} ===========================  ok')
+    else:
+        print(f'{cmdline2} ===========================  fail')
 
 #system contract
 def system_contract():
@@ -134,20 +135,20 @@ def system_contract():
     return res    
 
 def main():
-    if len(sys.argv)<1:
-        print('ERROR:Please supply the param file')
-        return False
-    param_dict, param_str = None, ''
-    with open(sys.argv[1], 'r') as fp:
-        param_str = fp.read()
-        param_dict = json.loads(param_str)
-    if not param_dict:
-        print('ERROR:param file can NOT be empty')
-        return False
+    #if len(sys.argv)<1:
+    #    print('ERROR:Please supply the param file')
+    #    return False
+    #param_dict, param_str = None, ''
+    #with open(sys.argv[1], 'r') as fp:
+    #    param_str = fp.read()
+    #    param_dict = json.loads(param_str)
+    #if not param_dict:
+    #    print('ERROR:param file can NOT be empty')
+    #    return False
     get_info()
     system_contract()
     transfer()
-    print('Get params:', sys.argv[0], param_str)
+    #print('Get params:', sys.argv[0], param_str)
     return True
 
 if __name__ == '__main__':
