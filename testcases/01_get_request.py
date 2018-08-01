@@ -21,13 +21,77 @@ def get_info():
     cmdline = "cleos get info"
     process = Popen(cmdline, stdout=PIPE, stderr=PIPE,shell=True)
     stdout, stderr = process.communicate()
-    if not stderr:
+    if stdout:
         print(f'{cmdline} ===========================  ok')
         return True
-    else:
+    if stderr:
         print(f'{cmdline} =========================== fail')
         print(stderr)
         return False 
+
+#transfer
+def transfer():
+    account1_balance1 = 0
+    account1_balance2 = 0
+    account2_balance1 = 0
+    account2_balance2 = 0
+    #获取转账钱的=余额
+    cmdline = "cleos get currency balance eosio.token zhangshiqi12"
+    process = Popen(cmdline, stdout=PIPE, stderr=PIPE,shell=True)
+    stdout, stderr = process.communicate()
+    if stdout:
+        print(f'{cmdline} ===========================  ok')
+        account1_balance1 = stdout
+        print("account1_balance1 ==",account1_balance1)
+    if stderr:
+        print(f'{cmdline} =========================== fail')
+        print(stderr)
+    
+    cmdline = "cleos get currency balance eosio.token zhangshiqi11"
+    process = Popen(cmdline, stdout=PIPE, stderr=PIPE,shell=True)
+    stdout, stderr = process.communicate()
+    if stdout:
+        print(f'{cmdline} ===========================  ok')
+        account2_balance1 = stdout
+        print("account2_balance1 ==",account2_balance1)
+    if stderr:
+        print(f'{cmdline} =========================== fail')
+        print(stderr)
+    #执行转账
+    cmdline2 = 'cleos transfer zhangshiqi12 zhangshiqi11 \"2.0000 EOS\" '
+    process = Popen(cmdline2, stdout=PIPE, stderr=PIPE,shell=True)
+    stdout, stderr = process.communicate()
+    if stdout:
+        print(f'{cmdline2} ===========================  ok')
+    if stderr:
+        print(f'{cmdline2} =========================== fail')
+        print(stderr)
+    time.sleep(3)
+    #查看转账后的余额
+    cmdline = "cleos get currency balance eosio.token zhangshiqi12"
+    process = Popen(cmdline, stdout=PIPE, stderr=PIPE,shell=True)
+    stdout, stderr = process.communicate()
+    if stdout:
+        account1_balance2 = stdout
+        print("account1_balance1 ==",account1_balance2)
+    if stderr:
+        print(f'{cmdline} =========================== fail')
+        print(stderr)
+
+    cmdline = "cleos get currency balance eosio.token zhangshiqi11"
+    process = Popen(cmdline, stdout=PIPE, stderr=PIPE,shell=True)
+    stdout, stderr = process.communicate()
+    if stdout:
+        account2_balance2 = stdout
+        print("account2_balance2 ==",account2_balance2)
+    if stderr:
+        print(f'{cmdline} =========================== fail')
+        print(stderr)
+    #判断是否与预期相等
+    #if (int(account1_balance1)- int(account1_balance2)) == (int(account2_balance2) - int(account2_balance1)):
+    #    print(f'{cmdline2} ===========================  ok')
+    #else:
+    #    print(f'{cmdline2} ===========================  fail')
 
 #system contract
 def system_contract():
@@ -38,14 +102,14 @@ def system_contract():
     cmdline1 = "cleos get table eosio eosio producers -l 100"
     process = Popen(cmdline1, stdout=PIPE, stderr=PIPE,shell=True)
     stdout, stderr = process.communicate()
-    if not stderr:
+    if stdout:
         result = json.loads(stdout)
         pro = result['rows']
         for i in pro:
              if i['owner'] == 'zhangshiqi11':
                  print(f'{cmdline} =========================== ok')
                  res = True
-    else:
+    if stderr:
         print(f'{cmdline} =========================== fail')
         print(stderr)
         res = False 
@@ -56,14 +120,14 @@ def system_contract():
     cmdline1 = "cleos get table eosio eosio producers -l 100"
     process = Popen(cmdline1, stdout=PIPE, stderr=PIPE,shell=True)
     stdout, stderr = process.communicate()
-    if not stderr:
+    if stdout:
         result = json.loads(stdout)
         pro = result['rows']
         for i in pro:
             if i['owner'] == 'zhangshiqi11':
                 print(f'{cmdline} =========================== ok')
                 res = True
-    else:
+    if stderr:
         print(f'{cmdline} =========================== fail')
         print(stderr) 
         res = False 
@@ -82,6 +146,7 @@ def main():
         return False
     get_info()
     system_contract()
+    transfer()
     print('Get params:', sys.argv[0], param_str)
     return True
 
