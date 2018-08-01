@@ -2,9 +2,9 @@
   "common_params": {
     "nodeos_url": "http://127.0.0.1:8888",
     "wallet_url": "http://127.0.0.1:9800",
-    "exist_account": "eosttmonster",
-    "exist_acct_active_pub": "EOS8TfBSfwjPeKCgUfCCEfJPx1UhP2CS1Xh8xoYoELtkQJQ9g99vP",
-    "exist_acct_active_pri": "5KdJZv62ZKzxhasNSojk7gC712pF9sRad4KhVyugg442qYvhWYw",
+    "exist_account": "zhangshiqi11",
+    "exist_acct_active_pub": "EOS8HrnMdHbgrchNFtV9ySE4uwCSnoix4f3JZnJcw9ryyydg2DSup",
+    "exist_acct_active_pri": "5HzG8hQfLQv4HnoSZFE4SzYCzbHV7QxJWaMzgBSgNggDDff3Lb2",
     "req_timeout": 3
   },
   "testcases": [
@@ -24,7 +24,7 @@
       "pre_call": "echo 'This is called BEFORE cmdline call'",
       "post_call": "echo 'This is called AFTER cmdline call'",
       "stoponfail": "true",
-      "cmdline": "python3 testcases/01_get_request.py",
+      "cmdline": "python3.6 testcases/01_get_request.py",
       "params": {
         "demo_param1": "demo_param1",
         "demo_param2": 100
