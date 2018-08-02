@@ -24,7 +24,7 @@
       "pre_call": "echo 'This is called BEFORE cmdline call'",
       "post_call": "echo 'This is called AFTER cmdline call'",
       "stoponfail": "true",
-      "cmdline": "python3.6 testcases/01_get_request.py",
+      "cmdline": "python3.6 testcases/01_get_request.py zhangshiqi12",
       "params": {
         "demo_param1": "demo_param1",
         "demo_param2": 100

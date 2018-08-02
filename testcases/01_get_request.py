@@ -16,8 +16,8 @@ import multiprocessing
 from decimal import Decimal, getcontext
 
 
-creator = 'zhangshiqi12'
-
+#creator = 'zhangshiqi12'
+creator = sys.argv[1]
 def account_random():
     seed = "12345abcdefghijklmnopqrstuvwxyz"
     sa = []
@@ -32,8 +32,14 @@ def get_info():
     process = Popen(cmdline, stdout=PIPE, stderr=PIPE,shell=True)
     stdout, stderr = process.communicate()
     if stdout:
-        print(f'{cmdline} ===========================  ok')
-        return True
+        param = json.loads(stdout)
+        print('param:',param)
+        if param['chain_id'] == '5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191':
+            print(f'chain_id is right')
+            return True
+        else:
+            print(f'chain_id is wrong')
+            return False
     if stderr:
         print(f'{cmdline} =========================== fail')
         print(stderr)
@@ -48,6 +54,7 @@ def transfer():
     #创建一个账户
     #newaccount = account_random()
     newaccount = 'zhangshiqi11'
+    print('creator:',creator)
     print('new account :',newaccount)
     #cmdline = f'cleos system newaccount --stake-net \"5 EOS\" --stake-cpu \"5 EOS\" --buy-ram \"2 EOS\"  {creator} {newaccount}   '
     #process = Popen(cmdline, stdout=PIPE, stderr=PIPE,shell=True)
@@ -170,9 +177,11 @@ def main():
     #if not param_dict:
     #    print('ERROR:param file can NOT be empty')
     #    return False
-    get_info()
-    system_contract()
-    transfer()
+    res = get_info()
+    if not res:
+        return False
+    #system_contract()
+    #transfer()
     #print('Get params:', sys.argv[0], param_str)
     return True
 
