@@ -266,7 +266,6 @@ class WalletClient(HttpClient):
     def __init__(self, host='localhost', port=8888, **kwargs):
         hostname = host.split('//')[-1].split(':')[0]
         if hostname not in ['localhost', '127.0.0.1']:
-            print ('hostname',hostname)
             import warnings
             warnings.warn(f"Using the wallet API on {hostname} might be insecure!")
 
