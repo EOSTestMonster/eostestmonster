@@ -65,7 +65,6 @@ def run_testcase(case_dict, common_params):
         cmdline = case_dict['cmdline'] + " " + params_file
         logger.info('Going to execute cmdline: {} {}'.format(case_dict['casename'], cmdline))
         pmsg = subprocess.check_output(cmdline,stderr=subprocess.STDOUT, shell=True)
-        #pmsg = subprocess.check_output(cmdline, shell=True)
         logger.info(pmsg)
 
         if 'post_call' in case_dict and case_dict['post_call']:

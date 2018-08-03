@@ -18,6 +18,9 @@ from decimal import Decimal, getcontext
 
 #creator = 'zhangshiqi12'
 creator = sys.argv[1]
+bpname = sys.argv[2]
+pubkey = sys.argv[3]
+
 def account_random():
     seed = "12345abcdefghijklmnopqrstuvwxyz"
     sa = []
@@ -52,10 +55,8 @@ def transfer():
     account2_balance1 = 0
     account2_balance2 = 0
     #创建一个账户
+    newaccount = bpname
     #newaccount = account_random()
-    newaccount = 'zhangshiqi11'
-    print('creator:',creator)
-    print('new account :',newaccount)
     #cmdline = f'cleos system newaccount --stake-net \"5 EOS\" --stake-cpu \"5 EOS\" --buy-ram \"2 EOS\"  {creator} {newaccount}   '
     #process = Popen(cmdline, stdout=PIPE, stderr=PIPE,shell=True)
     #time.sleep(1)
@@ -129,7 +130,7 @@ def transfer():
 #system contract
 def system_contract():
     #reprod
-    cmdline = "cleos system regproducer zhangshiqi11 EOS5NKY5vhyqWNgKeNbiUx2iC6cEnooiQsYQMjCmFFMoVLUExGHba https://www.eos.store 900"
+    cmdline = f"cleos system regproducer {bpname} {pubkey} "
     process = Popen(cmdline, stdout=PIPE, stderr=PIPE,shell=True)
     time.sleep(2)
     cmdline1 = "cleos get table eosio eosio producers -l 100"
@@ -139,7 +140,7 @@ def system_contract():
         result = json.loads(stdout)
         pro = result['rows']
         for i in pro:
-             if i['owner'] == 'zhangshiqi11':
+             if i['owner'] == f'{bpname}':
                  print(f'{cmdline} =========================== ok')
                  res = True
     if stderr:
@@ -147,7 +148,7 @@ def system_contract():
         print(stderr)
         res = False 
     
-    cmdline = "cleos system unregprod zhangshiqi11"
+    cmdline = f"cleos system unregprod {bpname}"
     process = Popen(cmdline, stdout=PIPE, stderr=PIPE,shell=True)
     time.sleep(2)
     cmdline1 = "cleos get table eosio eosio producers -l 100"
@@ -157,7 +158,7 @@ def system_contract():
         result = json.loads(stdout)
         pro = result['rows']
         for i in pro:
-            if i['owner'] == 'zhangshiqi11':
+            if i['owner'] == f'{bpname}':
                 print(f'{cmdline} =========================== ok')
                 res = True
     if stderr:
@@ -180,8 +181,8 @@ def main():
     res = get_info()
     if not res:
         return False
-    #system_contract()
-    #transfer()
+    system_contract()
+    transfer()
     #print('Get params:', sys.argv[0], param_str)
     return True
 
