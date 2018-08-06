@@ -17,9 +17,9 @@ from decimal import Decimal, getcontext
 
 
 #creator = 'zhangshiqi12'
-creator = sys.argv[1]
-bpname = sys.argv[2]
-pubkey = sys.argv[3]
+creator = sys.argv[2]
+bpname = sys.argv[3]
+pubkey = sys.argv[4]
 
 def account_random():
     seed = "12345abcdefghijklmnopqrstuvwxyz"
@@ -168,22 +168,22 @@ def system_contract():
     return res    
 
 def main():
-    #if len(sys.argv)<1:
-    #    print('ERROR:Please supply the param file')
-    #    return False
-    #param_dict, param_str = None, ''
-    #with open(sys.argv[1], 'r') as fp:
-    #    param_str = fp.read()
-    #    param_dict = json.loads(param_str)
-    #if not param_dict:
-    #    print('ERROR:param file can NOT be empty')
-    #    return False
+    if len(sys.argv)<1:
+        print('ERROR:Please supply the param file')
+        return False
+    param_dict, param_str = None, ''
+    with open(sys.argv[1], 'r') as fp:
+        param_str = fp.read()
+        param_dict = json.loads(param_str)
+    if not param_dict:
+        print('ERROR:param file can NOT be empty')
+        return False
     res = get_info()
     if not res:
         return False
     system_contract()
     transfer()
-    #print('Get params:', sys.argv[0], param_str)
+    print('Get params:', sys.argv[0], param_str)
     return True
 
 if __name__ == '__main__':
