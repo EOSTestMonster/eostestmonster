@@ -3,7 +3,7 @@
 
 主要功能：方便对主网的功能进行测试。
 
-该项目需要使用 **Python3**, 为了未来。
+该项目需要使用 **Python3.6**, 为了未来。
 
 [Click to view in English](README.md)
 
@@ -48,3 +48,31 @@ startmonster.py 会循环调用，并把 common_params 和 testcase指定的para
 3. 运行startmoster.py
 
 ![image](./image/startmonster.png)
+
+1.注意
+
+在运行前需要打开eosapi/httpapi/http_client.py,在```class HttpClient(object):```中初始化的时候设置指定节点的url，
+例如：self.node_url = 'http://127.0.0.1:8888' 
+
+并在main函数中修改对应的地址
+```
+if __name__ == '__main__':
+    h = HttpClient(["http://127.0.0.1:8888"])
+```
+
+2.新增的测试用例，需要修改成自己的内容,account1 表示转账发起者，account2表示转账接收者和注册bp的账户，pubkey表示注册bp的公钥
+```
+{
+      "casename": "Testcase 01_get_request",
+      "pre_call": "echo 'This is called BEFORE cmdline call'",
+      "post_call": "echo 'This is called AFTER cmdline call'",
+      "stoponfail": "true",
+      "cmdline": "python3.6 testcases/01_get_request.py <account1> <account2> <pubkey>",
+      "params": {
+        "demo_param1": "demo_param1",
+        "demo_param2": 100
+      }
+}
+```
+
+
