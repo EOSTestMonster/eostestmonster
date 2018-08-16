@@ -73,7 +73,7 @@ class HttpClient(object):
         '''
 
         self.nodes = cycle(self._nodes(nodes))
-        self.node_url = ''
+        self.node_url = 'http://127.0.0.1:8888'
         self.next_node()
 
     def next_node(self):
@@ -185,5 +185,5 @@ class HttpClient(object):
 
 
 if __name__ == '__main__':
-    h = HttpClient(["http://eosdapp.oneeos.org:8000"])
+    h = HttpClient(["http://127.0.0.1:8888"])
     print(h.exec('chain', 'get_info'))

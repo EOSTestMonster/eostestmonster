@@ -18,6 +18,20 @@
         "demo_param1": "demo_param1",
         "demo_param2": 100
       }
+    },
+    {
+      "casename": "Testcase 01_get_request",
+      "pre_call": "echo 'This is called BEFORE cmdline call'",
+      "post_call": "echo 'This is called AFTER cmdline call'",
+      "stoponfail": "true",
+      "cmdline": "python3.6 testcases/01_get_request.py",
+      "params": {
+        "demo_param1": "demo_param1",
+        "demo_param2": 100,
+        "creator": "zhangshiqi12",
+        "newaccount":"zhangshiqi11",
+        "bppubkey":"EOS8HrnMdHbgrchNFtV9ySE4uwCSnoix4f3JZnJcw9ryyydg2DSup"
+      }
     }
   ]
 }
