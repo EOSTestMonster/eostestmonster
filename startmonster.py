@@ -61,12 +61,10 @@ def run_testcase(case_dict, common_params):
         params_file = os.path.join(TMP_PATH, str(re.sub(r"\s+", "", case_dict['casename'])).lower() + ".json")
         with open(params_file, "w") as fp:
             fp.write(json.dumps(params, indent=True, sort_keys=True, ensure_ascii=False))
-        
+
         cmdline = case_dict['cmdline'] + " " + params_file
-        if params.__contains__('creator') and params.__contains__('newaccount') and params.__contains__('bppubkey'):
-           cmdline = cmdline + " " + params['creator'] +" " + params['newaccount'] + " "+ params['bppubkey']
         logger.info('Going to execute cmdline: {} {}'.format(case_dict['casename'], cmdline))
-        pmsg = subprocess.check_output(cmdline,stderr=subprocess.STDOUT, shell=True)
+        pmsg = subprocess.check_output(cmdline, stderr=subprocess.STDOUT, shell=True)
         logger.info(pmsg)
 
         if 'post_call' in case_dict and case_dict['post_call']:

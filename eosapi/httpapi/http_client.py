@@ -185,5 +185,5 @@ class HttpClient(object):
 
 
 if __name__ == '__main__':
-    h = HttpClient(["http://127.0.0.1:8888"])
+    h = HttpClient(["http://eosdapp.oneeos.org:8000"])
     print(h.exec('chain', 'get_info'))
