@@ -49,25 +49,20 @@ startmonster.py 会循环调用，并把 common_params 和 testcase指定的para
 
 ![image](./image/startmonster.png)
 
-1.注意
-
-在运行前需要打开eosapi/httpapi/http_client.py,在```class HttpClient(object):```中初始化的时候设置指定节点的url，
-```
-if __name__ == '__main__':
-    h = HttpClient(["http://127.0.0.1:8888"])
-```
-
-2.新增的测试用例，需要修改成自己的内容,account1 表示转账发起者，account2表示转账接收者和注册bp的账户，pubkey表示注册bp的公钥
+1.新增的测试用例，需要修改成自己的内容,creator 表示转账发起者，newaccount表示转账接收者和注册bp的账户，bppubkey表示注册bp的公钥
 ```
 {
       "casename": "Testcase 01_get_request",
       "pre_call": "echo 'This is called BEFORE cmdline call'",
       "post_call": "echo 'This is called AFTER cmdline call'",
       "stoponfail": "true",
-      "cmdline": "python3.6 testcases/01_get_request.py <account1> <account2> <pubkey>",
+      "cmdline": "python3.6 testcases/01_get_request.py",
       "params": {
         "demo_param1": "demo_param1",
-        "demo_param2": 100
+        "demo_param2": 100,
+        "creator": "zhangshiqi12",
+        "newaccount":"zhangshiqi11",
+        "bppubkey":"EOS8HrnMdHbgrchNFtV9ySE4uwCSnoix4f3JZnJcw9ryyydg2DSup"
       }
 }
 ```
