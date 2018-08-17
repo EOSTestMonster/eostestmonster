@@ -52,9 +52,6 @@ startmonster.py 会循环调用，并把 common_params 和 testcase指定的para
 1.注意
 
 在运行前需要打开eosapi/httpapi/http_client.py,在```class HttpClient(object):```中初始化的时候设置指定节点的url，
-例如：self.node_url = 'http://127.0.0.1:8888' 
-
-并在main函数中修改对应的地址
 ```
 if __name__ == '__main__':
     h = HttpClient(["http://127.0.0.1:8888"])
