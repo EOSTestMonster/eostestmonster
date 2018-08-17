@@ -18,6 +18,7 @@ from decimal import Decimal, getcontext
 
 #creator = 'zhangshiqi12'
 creator = sys.argv[1]
+chain_id = sys.argv[4]
 def account_random():
     seed = "12345abcdefghijklmnopqrstuvwxyz"
     sa = []
@@ -34,7 +35,7 @@ def get_info():
     if stdout:
         param = json.loads(stdout)
         print('param:',param)
-        if param['chain_id'] == '5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191':
+        if param['chain_id'] == chain_id:
             print(f'chain_id is right')
             return True
         else:

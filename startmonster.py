@@ -64,7 +64,7 @@ def run_testcase(case_dict, common_params):
 
         cmdline = case_dict['cmdline'] + " " + params_file
         if  case_dict['casename'] == 'Testcase 01_get_request':
-            cmdline = case_dict['cmdline'] + " " + case_dict['params']['creator'] + " "+ case_dict['params']['newaccount'] + " " + case_dict['params']['bppubkey'] + " " + params_file
+            cmdline = case_dict['cmdline'] + " " + case_dict['params']['creator'] + " "+ case_dict['params']['newaccount'] + " " + case_dict['params']['bppubkey'] + " " +case_dict['params']['chain_id']+ " " + params_file
         logger.info('Going to execute cmdline: {} {}'.format(case_dict['casename'], cmdline))
         pmsg = subprocess.check_output(cmdline, stderr=subprocess.STDOUT, shell=True)
         logger.info(pmsg)
