@@ -62,10 +62,7 @@ def run_testcase(case_dict, common_params):
         with open(params_file, "w") as fp:
             fp.write(json.dumps(params, indent=True, sort_keys=True, ensure_ascii=False))
 
-        if case_dict['casename'] == 'Testcase Demo':
-            cmdline = case_dict['cmdline'] + " " + params_file
-        elif case_dict['casename'] == 'Testcase 01_get_request':
-            cmdline = case_dict['cmdline'] + " " + params['creator'] + " "+ params['newaccount'] + " " + params['bppubkey'] + " " + params['chain_id']+ " " + params_file
+        cmdline = case_dict['cmdline'] + " " + params_file
         logger.info('Going to execute cmdline: {} {}'.format(case_dict['casename'], cmdline))
         pmsg = subprocess.check_output(cmdline, stderr=subprocess.STDOUT, shell=True)
         logger.info(pmsg)
