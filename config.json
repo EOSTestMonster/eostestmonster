@@ -21,8 +21,8 @@
     },
     {
       "casename": "Testcase 01_get_request",
-      "pre_call": "echo 'This is called BEFORE cmdline call'",
-      "post_call": "echo 'This is called AFTER cmdline call'",
+      "pre_call": "echo 'This is called BEFORE system_test call'",
+      "post_call": "echo 'This is called AFTER system_test call'",
       "stoponfail": "true",
       "cmdline": "python3.6 testcases/01_get_request.py",
       "params": {
