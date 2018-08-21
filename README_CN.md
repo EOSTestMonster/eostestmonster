@@ -48,3 +48,23 @@ startmonster.py 会循环调用，并把 common_params 和 testcase指定的para
 3. 运行startmoster.py
 
 ![image](./image/startmonster.png)
+
+1.新增的测试用例，需要修改成自己的内容,creator 表示转账发起者，newaccount表示转账接收者和注册bp的账户，bppubkey表示注册bp的公钥
+```
+{
+      "casename": "Testcase 01_get_request",
+      "pre_call": "echo 'This is called BEFORE cmdline call'",
+      "post_call": "echo 'This is called AFTER cmdline call'",
+      "stoponfail": "true",
+      "cmdline": "python3.6 testcases/01_get_request.py",
+      "params": {
+        "demo_param1": "demo_param1",
+        "demo_param2": 100,
+        "creator": "zhangshiqi12",
+        "newaccount":"zhangshiqi11",
+        "bppubkey":"EOS8HrnMdHbgrchNFtV9ySE4uwCSnoix4f3JZnJcw9ryyydg2DSup"
+      }
+}
+```
+
+

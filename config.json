@@ -18,6 +18,19 @@
         "demo_param1": "demo_param1",
         "demo_param2": 100
       }
+    },
+    {
+      "casename": "Testcase 01_get_request",
+      "pre_call": "echo 'This is called BEFORE system_test call'",
+      "post_call": "echo 'This is called AFTER system_test call'",
+      "stoponfail": "true",
+      "cmdline": "python3.6 testcases/01_get_request.py",
+      "params": {
+        "creator": "zhangshiqi12",
+        "newaccount":"zhangshiqi11",
+        "bppubkey":"EOS8HrnMdHbgrchNFtV9ySE4uwCSnoix4f3JZnJcw9ryyydg2DSup",
+        "chain_id":"5fff1dae8dc8e2fc4d5b23b2c7665c97f9e9d8edf2b6485a86ba311c25639191"
+      }
     }
   ]
 }
